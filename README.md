@@ -9,6 +9,6 @@
 ## Команда авторов
 
 - [Адамян Петрос](https://github.com/HimmelSpark)
-- [Виктория Иосифова](https://github.com/)
-- [Никита Федоров](https://github.com/)
-- [Михаил Кузнецов](https://github.com/)
+- [Виктория Иосифова](https://github.com/viktoriaai)
+- [Никита Федоров](https://github.com/wnikiti4)
+- [Михаил Кузнецов](https://github.com/Neonchick)
