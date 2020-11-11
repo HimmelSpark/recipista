@@ -1,4 +1,4 @@
-package ru.mail.hse.recipista;
+package ru.mail.hse.recipista.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ru.mail.hse.recipista.repository.IngredinentRepository;
+import ru.mail.hse.recipista.R;
+import ru.mail.hse.recipista.adapter.IngredientAdapter;
+
 public class IngredientFragment extends Fragment {
-    RecyclerView recycler = null;
+
+    private RecyclerView recycler = null;
 
     @Nullable
     @Override
@@ -26,7 +31,7 @@ public class IngredientFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recycler = view.findViewById(R.id.recycler);
-        recycler.setAdapter(new IngredientAdapter(IngredinentRepository.getInstance().list()));
+        recycler.setAdapter(new IngredientAdapter(IngredinentRepository.list()));
         recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 

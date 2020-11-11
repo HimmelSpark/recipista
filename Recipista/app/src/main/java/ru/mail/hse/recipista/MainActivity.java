@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import ru.mail.hse.recipista.fragment.IngredientFragment;
+import ru.mail.hse.recipista.tag.Tags;
 
-    final String TAG_LIST = "LIST";
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.main_layout, new IngredientFragment(), TAG_LIST)
+                .add(R.id.main_layout, new IngredientFragment(), Tags.TAG_LIST)
                 .commit();
     }
 }

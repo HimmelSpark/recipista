@@ -1,4 +1,4 @@
-package ru.mail.hse.recipista;
+package ru.mail.hse.recipista.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
-class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
+import ru.mail.hse.recipista.R;
+import ru.mail.hse.recipista.viewholder.IngredientViewHolder;
 
-    List<String> ingredients;
+public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
+
+    private List<String> ingredients;
 
     public IngredientAdapter(List<String> ingredients) {
         this.ingredients = ingredients;
@@ -21,11 +23,9 @@ class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
     @NonNull
     @Override
     public IngredientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Получаем инфлейтер и создаем нужный layout
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View layout = inflater.inflate(R.layout.list_element, parent, false);
 
-        // Создаем ViewHolder
         return new IngredientViewHolder(layout);
     }
 
