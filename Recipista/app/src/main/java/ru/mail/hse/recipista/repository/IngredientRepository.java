@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class IngredinentRepository {
+public class IngredientRepository {
+    private static final int DATA_SIZE = 100;
 
-    public static final int DATA_SIZE = 100;
-
-    public static final Random RANOMIZER = new Random();
+    private static final Random RANOMIZER = new Random();
 
     private static List<String> ingredinents = initializeData();
 
