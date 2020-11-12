@@ -27,6 +27,7 @@ dependencies {
     implementation group: 'androidx.appcompat', name:'appcompat', version: appcompatVersion
     implementation group: 'androidx.constraintlayout', name:'constraintlayout', version: constraintlayoutVersion
     implementation group: 'androidx.recyclerview', name:'recyclerview', version: recyclerviewVersion
+    implementation group: 'com.squareup.retrofit2', name:'retrofit', version: retrofitVersion
 
     testImplementation group: 'junit', name:'junit', version: junitVersion
 
