@@ -22,3 +22,14 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+configure(subprojects) { subProject ->
+    ext {
+        appcompatVersion = '1.2.0'
+        constraintlayoutVersion = '2.0.4'
+        recyclerviewVersion = '1.1.0'
+        junitVersion = '4.13'
+        extJunitVersion = '1.1.2'
+        espressoCoreVersion = '3.3.0'
+    }
+}
