@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/element_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<!-- Элемент списка (ингридиент). К нему обращаемся в RecyclerView -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="370dp"
+android:layout_height="wrap_content"
+android:layout_centerHorizontal="true"
+android:layout_centerVertical="true"
+android:layout_marginStart="20dp"
+android:layout_marginTop="20dp"
+android:background="@drawable/my_rounded_bg"
+tools:context=".MainActivity">
+
+<TextView
+    android:id="@+id/ingredient_tv"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:minHeight="@dimen/min_listElement_heigth"
-    android:layout_marginStart="@dimen/standart_margin">
-    <TextView
-        android:id="@+id/ingredient_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:textSize="33sp" />
+
+<CheckBox
+    android:id="@+id/checkBoxItem"
+    android:layout_width="wrap_content"
+    android:layout_height="48dp"
+    android:layout_alignParentEnd="true"
+    android:layout_centerVertical="true" />
+
+
+</RelativeLayout>
