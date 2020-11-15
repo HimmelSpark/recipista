@@ -1,6 +1,9 @@
 package ru.mail.hse.recipista.tag;
 
-public class Tags {
+public final class Tags {
+
+    private Tags() {
+    }
 
     public static final String TAG_LIST = "LIST";
 }
