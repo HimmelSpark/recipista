@@ -13,11 +13,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import ru.mail.hse.recipista.api.MealApi;
 import ru.mail.hse.recipista.dto.AllIngredientsDto;
 
-public class MealClient implements Callback<AllIngredientsDto> {
+public class MealClient {
 
     private static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
 
-    public void getAllIngredients() {
+    public void getAllIngredients(Callback<AllIngredientsDto> callback) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -29,24 +29,6 @@ public class MealClient implements Callback<AllIngredientsDto> {
 
         MealApi mealApi = retrofit.create(MealApi.class);
         Call<AllIngredientsDto> call = mealApi.getAllIngredients();
-        call.enqueue(this);
-    }
-
-    @Override
-    public void onResponse(Call<AllIngredientsDto> call, Response<AllIngredientsDto> response) {
-        if (response.isSuccessful()) {
-            Optional.of(response)
-                    .map(Response::body)
-                    .map(AllIngredientsDto::getMeals)
-                    .ifPresent(list -> list.forEach(i -> System.out.println(i.getStrIngredient())));
-        } else {
-            System.out.println("kaka");
-        }
-    }
-
-    @Override
-    public void onFailure(Call<AllIngredientsDto> call, Throwable t) {
-        t.printStackTrace();
-        //TODO добавить alert notifier
+        call.enqueue(callback);
     }
 }
