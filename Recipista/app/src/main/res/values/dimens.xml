@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="standart_margin">20dp</dimen>
-    <dimen name="min_listElement_heigth">40dp</dimen>
-</resources>
