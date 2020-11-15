@@ -16,6 +16,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import ru.mail.hse.recipista.R;
 import ru.mail.hse.recipista.client.MealClient;
+import ru.mail.hse.recipista.component.DaggerHttpComponent;
+import ru.mail.hse.recipista.component.HttpComponent;
 import ru.mail.hse.recipista.dto.AllIngredientsDto;
 import ru.mail.hse.recipista.dto.IngredientDto;
 import ru.mail.hse.recipista.viewholder.IngredientViewHolder;
@@ -23,13 +25,13 @@ import ru.mail.hse.recipista.viewholder.IngredientViewHolder;
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
 
     private List<String> ingredients;
-    private MealClient mealClient;
 
-    public IngredientAdapter(List<String> ingredients, MealClient mealClient) {
-        this.mealClient = mealClient;
+    public IngredientAdapter() {
         final List<String> ingredientList = new ArrayList<>();
         IngredientAdapter adapter = this;
-        this.mealClient.getAllIngredients(new Callback<AllIngredientsDto>() {
+        HttpComponent httpComponent = DaggerHttpComponent.builder().build();
+        MealClient mealClient = httpComponent.getMealClient();
+        mealClient.getAllIngredients(new Callback<AllIngredientsDto>() {
 
             @Override
             public void onResponse(Call<AllIngredientsDto> call, Response<AllIngredientsDto> response) {

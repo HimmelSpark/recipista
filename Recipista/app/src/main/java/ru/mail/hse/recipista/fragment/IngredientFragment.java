@@ -10,9 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import ru.mail.hse.recipista.client.MealClient;
-import ru.mail.hse.recipista.repository.IngredientRepository;
 import ru.mail.hse.recipista.R;
 import ru.mail.hse.recipista.adapter.IngredientAdapter;
 
@@ -32,7 +29,7 @@ public class IngredientFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recycler = view.findViewById(R.id.recycler);
-        recycler.setAdapter(new IngredientAdapter(IngredientRepository.list(), new MealClient()));
+        recycler.setAdapter(new IngredientAdapter());
         recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
