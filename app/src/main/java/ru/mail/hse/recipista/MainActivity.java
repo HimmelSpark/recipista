@@ -1,9 +1,8 @@
 package ru.mail.hse.recipista;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import ru.mail.hse.recipista.fragment.IngredientFragment;
 import ru.mail.hse.recipista.tag.Tags;
 

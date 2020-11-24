@@ -20,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -27,8 +31,19 @@ dependencies {
     implementation group: 'androidx.appcompat', name:'appcompat', version: appcompatVersion
     implementation group: 'androidx.constraintlayout', name:'constraintlayout', version: constraintlayoutVersion
     implementation group: 'androidx.recyclerview', name:'recyclerview', version: recyclerviewVersion
+    implementation group: 'com.squareup.retrofit2', name:'retrofit', version: retrofitVersion
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: retrofitVersion
+    implementation group: 'org.projectlombok', name:'lombok', version: lombokVersion
+    implementation group: 'com.google.code.gson', name:'gson', version: gsonVersion
+    implementation group: 'com.google.dagger', name:'dagger', version: daggerVersion
 
+    annotationProcessor group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
+    annotationProcessor group: 'org.projectlombok', name:'lombok', version: lombokVersion
+
+    testImplementation group: 'org.projectlombok', name:'lombok', version: lombokVersion
     testImplementation group: 'junit', name:'junit', version: junitVersion
+
+    testAnnotationProcessor group: 'org.projectlombok', name:'lombok', version: lombokVersion
 
     androidTestImplementation group: 'androidx.test.ext', name:'junit', version: extJunitVersion
     androidTestImplementation group: 'androidx.test.espresso', name:'espresso-core', version: espressoCoreVersion
