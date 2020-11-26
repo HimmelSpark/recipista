@@ -36,6 +36,7 @@ dependencies {
     implementation group: 'org.projectlombok', name:'lombok', version: lombokVersion
     implementation group: 'com.google.code.gson', name:'gson', version: gsonVersion
     implementation group: 'com.google.dagger', name:'dagger', version: daggerVersion
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     annotationProcessor group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
     annotationProcessor group: 'org.projectlombok', name:'lombok', version: lombokVersion
