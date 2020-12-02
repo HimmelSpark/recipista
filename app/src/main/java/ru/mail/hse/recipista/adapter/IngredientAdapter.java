@@ -1,8 +1,11 @@
 package ru.mail.hse.recipista.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +25,11 @@ import ru.mail.hse.recipista.dto.AllIngredientsDto;
 import ru.mail.hse.recipista.dto.IngredientDto;
 import ru.mail.hse.recipista.viewholder.IngredientViewHolder;
 
-public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
+public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> implements Filterable {
 
     private List<String> ingredients;
+    private List<String> origIngredients; //для сравнения в getFilter()
+
 
     public IngredientAdapter() {
         final List<String> ingredientList = new ArrayList<>();
@@ -76,5 +81,35 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder
     @Override
     public int getItemCount() {
         return ingredients.size();
+    }
+
+
+    // переопределяем getFilter, который используем в onQueryTextChange (в IngredientFragment)
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                final FilterResults filterReturn = new FilterResults();
+                final List<String> results = new ArrayList<String>();
+                //if (origIngredients == null) {origIngredients = ingredients;}
+                if (constraint != null) {
+                    if (ingredients != null & ingredients.size() > 0) {
+                        for (final String g : ingredients) {
+                            if (g.toLowerCase().contains(constraint.toString())){ results.add(g);}
+                        }
+                    }
+                    filterReturn.values = results;
+                }
+                return filterReturn;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                ingredients = (ArrayList<String>) results.values;
+                notifyDataSetChanged();
+
+            }
+        };
     }
 }
