@@ -8,12 +8,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import ru.mail.hse.recipista.R;
-import ru.mail.hse.recipista.adapter.IngredientAdapter;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-public class IngredientFragment extends Fragment {
+import ru.mail.hse.recipista.R;
+import ru.mail.hse.recipista.adapter.RecipeAdapter;
+
+public class RecipeFragment extends Fragment {
 
     private RecyclerView recycler = null;
 
@@ -22,15 +23,16 @@ public class IngredientFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.ingredient_list_fragment, container, false);
+        return inflater.inflate(R.layout.recipe_list_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recycler = view.findViewById(R.id.ingredient_recycler);
-        recycler.setAdapter(new IngredientAdapter());
-        recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recycler = view.findViewById(R.id.recipe_recycler);
+        recycler.setAdapter(new RecipeAdapter());
+        recycler.setLayoutManager(new StaggeredGridLayoutManager(2,
+                StaggeredGridLayoutManager.VERTICAL));
     }
 
     @Override
