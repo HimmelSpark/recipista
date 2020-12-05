@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,6 +15,7 @@ import ru.mail.hse.recipista.component.HttpComponent;
 import ru.mail.hse.recipista.dto.AllIngredientsDto;
 import ru.mail.hse.recipista.dto.IngredientDto;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class IngredientProvider {
 
     private static HttpComponent httpComponent = DaggerHttpComponent.builder().build();
