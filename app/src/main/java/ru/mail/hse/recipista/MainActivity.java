@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ru.mail.hse.recipista.fragment.IngredientFragment;
+import ru.mail.hse.recipista.manager.IngredientManager;
 import ru.mail.hse.recipista.tag.Tags;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,10 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.main_layout, new IngredientFragment(), Tags.TAG_INGREDIENT_LIST)
-                .commit();
+        IngredientManager ingredientManager = new IngredientManager();
+        ingredientManager.setUpIngredientsPage(getSupportFragmentManager());
 
         /*getSupportFragmentManager()
                 .beginTransaction()
