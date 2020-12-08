@@ -1,6 +1,5 @@
 package ru.mail.hse.recipista.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ import ru.mail.hse.recipista.viewholder.IngredientViewHolder;
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> implements Filterable {
 
     private List<String> ingredients;
-    private List<String> origIngredients; //для сравнения в getFilter()
+    private List<String> tempIngredients;
 
 
     public IngredientAdapter() {
@@ -84,19 +83,21 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder
     }
 
 
-    // переопределяем getFilter, который используем в onQueryTextChange (в IngredientFragment)
     @Override
     public Filter getFilter() {
+
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 final FilterResults filterReturn = new FilterResults();
                 final List<String> results = new ArrayList<String>();
-                //if (origIngredients == null) {origIngredients = ingredients;}
+                if (tempIngredients == null) {tempIngredients = ingredients;}
                 if (constraint != null) {
-                    if (ingredients != null & ingredients.size() > 0) {
-                        for (final String g : ingredients) {
-                            if (g.toLowerCase().contains(constraint.toString())){ results.add(g);}
+                    if (tempIngredients != null && tempIngredients.size() > 0) {
+                        for (final String g : tempIngredients) {
+                            if (g.toLowerCase().contains(constraint.toString())){
+                                results.add(g);
+                            }
                         }
                     }
                     filterReturn.values = results;

@@ -1,20 +1,14 @@
 package ru.mail.hse.recipista.fragment;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +27,6 @@ public class IngredientFragment extends Fragment implements SearchView.OnQueryTe
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_fragment, container, false);
-        //инициализируем searchview
         SearchView searchView = (SearchView) view.findViewById(R.id.search_element);
         searchView.setOnQueryTextListener(this);
 
@@ -44,7 +37,7 @@ public class IngredientFragment extends Fragment implements SearchView.OnQueryTe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recycler = view.findViewById(R.id.recycler);
-        recycler.setAdapter(new IngredientAdapter());
+        recycler.setAdapter(ingredientAdapter);
         recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
@@ -62,7 +55,7 @@ public class IngredientFragment extends Fragment implements SearchView.OnQueryTe
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        if ( TextUtils.isEmpty ( newText ) ) {
+        if (TextUtils.isEmpty(newText)) {
             ingredientAdapter.getFilter().filter("");
         } else {
             ingredientAdapter.getFilter().filter(newText.toString());
